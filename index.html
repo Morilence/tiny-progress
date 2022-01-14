@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Demo of Using tiny-progress</title>
+        <link rel="stylesheet" href="./src/tinyprogress.css" />
+        <script src="./src/tinyprogress.js"></script>
+        <style>
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+                height: 100vh;
+            }
+            #app {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                width: 100%;
+                min-width: 500px;
+                height: 100%;
+                margin: 0 auto;
+
+                background-color: blueviolet;
+            }
+            .tiny-progress {
+                width: 320px;
+                height: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div class="progress"></div>
+        </div>
+        <script>
+            const tprogress = new TinyProgress(".progress", {
+                height: "8px",
+                thumbDiam: "16px",
+            });
+            tprogress.on("seek", logger);
+            tprogress.on("slidingstart", logger);
+            tprogress.on("sliding", logger);
+            tprogress.on("slidingend", logger);
+            // tprogress.on("loadedchange", logger);
+            // tprogress.on("playedchange", logger);
+            tprogress.setLoaded(0.15);
+            tprogress.setPlayed(1);
+
+            function logger(evt) {
+                console.log(
+                    `%c${(evt.percentage * 100).toFixed(2)}%. %c[${evt.type}]`,
+                    "color: greenyellow;",
+                    "color: blueviolet"
+                );
+            }
+        </script>
+    </body>
+</html>

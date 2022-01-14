@@ -1,0 +1,78 @@
+/* :root {
+    --tp_width: 100%;
+    --tp_height: 5px;
+    --tp_border_width: 0px;
+    --tp_border_radius: 5px;
+    --tp_border_color: transparent;
+    --tp_inner_color: white;
+    --tp_loaded_color: rgba(0, 0, 0, 0.15);
+    --tp_played_color: greenyellow;
+    --tp_thumb_diam: 12px;
+    --tp_thumb_color: greenyellow;
+} */
+
+.tiny-progress {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+
+    user-select: none;
+}
+
+.tiny-progress .tp__wrapper {
+    position: relative;
+
+    width: var(--tp_width);
+    height: var(--tp_height);
+    border-width: var(--tp_border_width);
+    border-color: var(--tp_border_color);
+    border-radius: var(--tp_border_radius);
+    background-color: var(--tp_inner_color);
+
+    z-index: 1;
+}
+
+.tiny-progress .tp__wrapper .tp__loaded {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    width: 60%;
+    height: 100%;
+    border-radius: var(--tp_border_radius);
+    background-color: var(--tp_loaded_color);
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tiny-progress .tp__wrapper .tp__played {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 30%;
+    height: 100%;
+    border-radius: var(--tp_border_radius);
+    background-color: var(--tp_played_color);
+
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tiny-progress .tp__wrapper .tp__played .tp__thumb {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+
+    width: var(--tp_thumb_diam);
+    height: var(--tp_thumb_diam);
+    border-radius: var(--tp_thumb_diam);
+
+    background-color: var(--tp_thumb_color);
+
+    z-index: 2;
+    cursor: pointer;
+    pointer-events: auto;
+}
